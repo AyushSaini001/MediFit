@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SignUp Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .login-container {
+      width: 70%;
+      max-width: 420px;
+      background-color: rgb(150, 150, 230);
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 13px;
+      display: block;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 15px 15px 15px 45px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      background-color: #4a6bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #4a6bff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img src="medifit.png" alt="Company logo" class="logo" />
+    <h2>Sign Up</h2>
+
+    <form id="signupForm">
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="email" placeholder="Email Address">
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-phone"></i>
+        <input type="tel" id="phone" placeholder="Phone Number (optional)" pattern="[0-9]{10}">
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox"> Remember me</label>
+        <a href="#" style="color:#fff;">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="login-btn">Sign Up</button>
+    </form>
+
+    <div class="signup-link">
+      Already have an account? <a href="login.html">Log In</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      // Validate presence
+      if ((!email && !phone) || !password) {
+        alert("Please fill in email or phone number, and password.");
+        return;
+      }
+
+      // Email validation
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      // Phone validation
+      if (phone && !/^[0-9]{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+      }
+
+      // Password length check
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return;
+      }
+
+      // If all is valid, redirect
+      window.location.href = "form.html";
+    });
+  </script>
+</body>
+</html>
