@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Pastient_info.css" type="text/css" media="all" />
+    <title>Patient Information Form</title>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Decorative circles -->
+        <div class="decor-circle circle-1"></div>
+        <div class="decor-circle circle-2"></div>
+
+        <div class="form-header">
+            <h1>Patient Information Form</h1>
+            <p>Please fill out all required fields completely and accurately</p>
+        </div>
+
+        <form id="patientForm">
+            <div class="form-section">
+                <h2><span>🆔</span>Personal Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Gender *</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="male" name="gender" value="male" required>
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="other" name="gender" value="other">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State/Province *</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">Zip/Postal Code *</label>
+                        <input type="text" id="zip" name="zip" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2><span>🆘</span>Emergency Contact</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="emergencyName">Name *</label>
+                        <input type="text" id="emergencyName" name="emergencyName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergencyRelation">Relationship *</label>
+                        <input type="text" id="emergencyRelation" name="emergencyRelation" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyPhone">Phone Number *</label>
+                    <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2><span>🏥</span>Medical History</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="physician">Primary Physician</label>
+                        <input type="text" id="physician" name="physician">
+                    </div>
+                    <div class="form-group">
+                        <label for="physicianPhone">Physician Phone</label>
+                        <input type="tel" id="physicianPhone" name="physicianPhone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="allergies">Allergies (medications, foods, environmental, etc.)</label>
+                    <textarea id="allergies" name="allergies"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="medications">Current Medications (include dosage)</label>
+                    <textarea id="medications" name="medications"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="conditions">Past/Present Medical Conditions</label>
+                    <textarea id="conditions" name="conditions" placeholder="High blood pressure, diabetes, asthma, etc."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="surgeries">Previous Surgeries/Hospitalizations</label>
+                    <textarea id="surgeries" name="surgeries"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" name="notes"></textarea>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="submit-btn">Submit Patient Information</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('patientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            const form = e.target;
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#e74c3c';
+                    field.style.boxShadow = '0 0 0 2px rgba(231, 76, 60, 0.2)';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#ddd';
+                    field.style.boxShadow = 'none';
+                }
+            });
+            
+            if (isValid) {
+                // Form is valid - you would typically send data to server here
+                alert('Thank you! Your patient information has been submitted successfully.');
+                form.reset();
+            } else {
+                alert('Please complete all required fields.');
+            }
+        });
+    </script>
+</body>
+</html>
