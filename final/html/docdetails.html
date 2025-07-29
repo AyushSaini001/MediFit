@@ -1,0 +1,368 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Details Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS */
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .logo-m {
+            height: 40px;
+            width: 80px;
+        }
+       
+        .specialty-chip {
+            transition: all 0.3s ease;
+        }
+
+        .specialty-chip:hover {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .appointment-btn {
+            background-image: linear-gradient(to right, #3b82f6, #6366f1);
+        }
+
+        .appointment-btn:hover {
+            background-image: linear-gradient(to right, #2563eb, #4f46e5);
+        }
+
+        .search-box {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- CSS FOR MODAL --- */
+        /* This ensures the date picker icon is visible on a white background */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0" >
+                    
+                    <a href="home.html"><img src="medifit.png" alt="Medical cross logo with blue gradient background" 
+                        class="h-10 w-40 mr-3 rounded-lg" /></a> 
+                </div>
+                <div class="relative w-full md:w-64">
+                    <input type="text" placeholder="Search doctors..."
+                        class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 search-box">
+                    <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Our Specialist Doctors</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- DOctor 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden doctor-card transition-all duration-300">
+                    <div class="relative">
+                        <img src="WhatsApp Image 2025-07-28 at 10.26.41_82ac3d4a.jpg"
+                            alt="Dr. Sarah Johnson, female cardiologist in white coat with stethoscope standing in modern hospital"
+                            class="w-full h-48 object-cover" />
+                        <div
+                            class="absolute top-4 right-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">
+                            </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Dr. Abhinit Gupta </h3>
+                                <p class="text-blue-600 font-medium">Cardiologist</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4"> AIIMS-trained cardiologist, specializes in STEMI care, angioplasty, trans-radial, structural heart interventions, and arrhythmia management.</p>
+                        <button
+                            class="book-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 appointment-btn">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+                <!-- Doctor 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden doctor-card transition-all duration-300">
+                     <div class="relative">
+                        <img src="dlupa.jpg"
+                            alt="Dr. Michael Chen, male neurologist with glasses sitting in office with medical books in background"
+                            class="w-full h-48 object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Dr. Jalpa P. Bhuta </h3>
+                                <p class="text-purple-600 font-medium">Psycologist</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4"> Counseling Psychologist, gold medalist in postgraduation; experienced in assessments, therapy, and case studies; dedicated to promoting mental well-being and building a healthier society</p>
+                        <button
+                            class="book-btn w-full bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+                <!-- Doctor 3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden doctor-card transition-all duration-300">
+                    <div class="relative">
+                        <img src="vikashbhalla.jpg"
+                            alt="Dr. Alicia Rodriguez, female pediatrician smiling while examining young patient in colorful clinic"
+                            class="w-full h-48 object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Dr. Vikash Sharma</h3>
+                                <p class="text-green-600 font-medium">Pediatrician</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Specializes in adolescent medicine, childhood vaccinations, and
+                            developmental disorders with a gentle, child-friendly approach.</p>
+                        <button
+                            class="book-btn w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor 4 -->
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden doctor-card transition-all duration-300">
+                    <div class="relative">
+                        <img src="sAMAN.jpg"
+                            alt="Dr. Sarah Johnson, female cardiologist in white coat with stethoscope standing in modern hospital"
+                            class="w-full h-48 object-cover" />
+                        <div
+                            class="absolute top-4 right-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">
+                            </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Dr. Saman Gauri</h3>
+                                <p class="text-blue-600 font-medium">Dentist</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">She Is DHA certified dental surgeon.She earned his degree from Maharashtra University of Health Sciences (MUHS), India.</p>
+                        <button
+                            class="book-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 appointment-btn">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor 5 -->
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden doctor-card transition-all duration-300">
+                    <div class="relative">
+                        <img src="hemant.jpg"
+                            alt="Dr. Sarah Johnson, female cardiologist in white coat with stethoscope standing in modern hospital"
+                            class="w-full h-48 object-cover" />
+                        <div
+                            class="absolute top-4 right-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">
+                            </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Dr. Hemant Kalra</h3>
+                                <p class="text-blue-600 font-medium">Pulmonologist</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">MBBS, MD - Pulmonary Medicine, Diploma in Tuberculosis and Chest Diseases (DTCD)
+
+22 Years Overall Experience . Specializes in preventive Pulmonology, Lungs failure.</p>
+                        <button
+                            class="book-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 appointment-btn">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Doctor 6 -->
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden doctor-card transition-all duration-300">
+                    <div class="relative">
+                        <img src="trivedi.jpg"
+                            alt="Dr. Sarah Johnson, female cardiologist in white coat with stethoscope standing in modern hospital"
+                            class="w-full h-48 object-cover" />
+                        <div
+                            class="absolute top-4 right-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">
+                            </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Dr. Archana Trivedi</h3>
+                                <p class="text-blue-600 font-medium">Gynaecologist</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4"> consultant obstetrician and gynaecologist with 17 years of work experience, including having worked abroad in U.K and Maldives..</p>
+                        <button
+                            class="book-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 appointment-btn">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="appointmentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md relative">
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Book an Appointment</h2>
+
+            <form id="appointmentForm">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
+                        <span class="text-sm font-medium text-gray-700">Department:</span>
+                        <span id="modalDepartmentName" class="font-semibold text-gray-900"></span>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
+                        <span class="text-sm font-medium text-gray-700">Doctor:</span>
+                        <span id="modalDoctorName" class="font-semibold text-gray-900"></span>
+                    </div>
+                    
+                    <div>
+                         <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                         <input type="date" id="date" name="date" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                         <label for="time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                         <select id="time" name="time" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Select Time Slot</option>
+                            <option>09:00 AM - 10:00 AM</option>
+                            <option>10:00 AM - 11:00 AM</option>
+                            <option>02:00 PM - 03:00 PM</option>
+                         </select>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-700 transition duration-300 appointment-btn">
+                        Book Now
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('appointmentModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const appointmentForm = document.getElementById('appointmentForm');
+            const appointmentButtons = document.querySelectorAll('.book-btn');
+            
+            // This variable will hold the name of the doctor being booked
+            let selectedDoctorName = '';
+
+            // Map the displayed specialty to the correct department name
+            const specialtyToDepartmentMap = {
+                'Cardiologist': 'Cardiology',
+                'Neurologist': 'Neurology',
+                'Pediatrician': 'Pediatrics',
+                'Psycologist' : 'Psycology',
+                'Dentist' : 'Dentology',
+                'Pulmonologist' : 'Pulmonology',
+                'Gynaecologist' : 'Gynology'
+
+            };
+            
+            // Function to show the modal
+            const showModal = () => modal.classList.remove('hidden');
+
+            // Function to hide the modal
+            const hideModal = () => modal.classList.add('hidden');
+
+            // Show modal when any "Book Appointment" button is clicked
+            appointmentButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const card = this.closest('.doctor-card');
+                    const doctorName = card.querySelector('h3').textContent.trim();
+                    const specialtyElement = card.querySelector('p[class*="-600"]');
+                    const specialtyText = specialtyElement ? specialtyElement.textContent.trim() : '';
+                    const departmentName = specialtyToDepartmentMap[specialtyText] || 'General';
+
+                    // Set the doctor's name for the submission alert
+                    selectedDoctorName = doctorName;
+
+                    // Populate the text fields in the modal
+                    document.getElementById('modalDoctorName').textContent = doctorName;
+                    document.getElementById('modalDepartmentName').textContent = departmentName;
+                    
+                    showModal();
+                });
+            });
+
+            // Hide modal when the close button (X) is clicked
+            closeModalBtn.addEventListener('click', hideModal);
+
+            // Hide modal when clicking on the background overlay
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    hideModal();
+                }
+            });
+
+            // Handle the form submission
+            appointmentForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent actual form submission
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+
+                if(!date || !time) {
+                     alert('Please select a date and time.');
+                     return;
+                }
+                
+                // Use the stored doctor's name for the confirmation message
+                alert(`Appointment successfully booked with ${selectedDoctorName} on ${date} at ${time}.`);
+                hideModal(); // Close the modal after booking
+                appointmentForm.reset(); // Reset the form fields
+            });
+
+            // --- Existing search functionality ---
+            const searchInput = document.querySelector('input[placeholder="Search doctors..."]');
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                const doctorCards = document.querySelectorAll('.doctor-card');
+
+                doctorCards.forEach(card => {
+                    const doctorName = card.querySelector('h3').textContent.toLowerCase();
+                    const specialtyElement = card.querySelector('p[class*="-600"]');
+                    const specialty = specialtyElement ? specialtyElement.textContent.toLowerCase() : '';
+                    const description = card.querySelector('.text-gray-600').textContent.toLowerCase();
+
+                    if (doctorName.includes(searchTerm) || specialty.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
